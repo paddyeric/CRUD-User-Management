@@ -1,8 +1,8 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
 
 export const apiService = {
   getAllUsers: async () => {
-    const response = await fetch(`${API_BASE_URL}/users`);
+    const response = await fetch(`${API_BASE_URL}/api/users`);
     if (!response.ok) {
       throw new Error('Failed to fetch users');
     }
@@ -10,7 +10,7 @@ export const apiService = {
   },
 
   getUserById: async (id) => {
-    const response = await fetch(`${API_BASE_URL}/users/${id}`);
+    const response = await fetch(`${API_BASE_URL}/api/users/${id}`);
     if (!response.ok) {
       throw new Error('Failed to fetch user');
     }
@@ -18,7 +18,7 @@ export const apiService = {
   },
 
   createUser: async (userData) => {
-    const response = await fetch(`${API_BASE_URL}/users`, {
+    const response = await fetch(`${API_BASE_URL}/api/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export const apiService = {
   },
 
   updateUser: async (id, userData) => {
-    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/users/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export const apiService = {
   },
 
   deleteUser: async (id) => {
-    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/users/${id}`, {
       method: 'DELETE',
     });
     if (!response.ok) {
